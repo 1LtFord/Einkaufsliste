@@ -3,13 +3,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DbHandler extends SQLiteOpenHelper {
+public class SQLiteHandler extends SQLiteOpenHelper {
     // Version & Name
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Einkaufsliste.db";
     public static SQLiteDatabase DB;
 
-    public DbHandler(Context context) {
+    public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
@@ -25,12 +25,5 @@ public class DbHandler extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
 
-    }
-
-    public void SaveArticle(Article article)
-    {
-        ContentValues values = new ContentValues();
-        values.put();
-        DB.insert(values);
     }
 }

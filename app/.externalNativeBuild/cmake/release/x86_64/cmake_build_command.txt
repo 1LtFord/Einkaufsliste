@@ -1,14 +1,14 @@
-Executable : C:\Users\Chris\AppData\Local\Android\Sdk\cmake\3.6.3155560\bin\cmake.exe
+Executable : D:\Programme\Android\sdk\cmake\3.6.3155560\bin\cmake.exe
 arguments : 
--HC:\Users\Chris\Desktop\Einkaufsliste-20170504T192843Z-001\Einkaufsliste\app
--BC:\Users\Chris\Desktop\Einkaufsliste-20170504T192843Z-001\Einkaufsliste\app\.externalNativeBuild\cmake\release\x86_64
+-HP:\Projekte\Einkaufsliste\Einkaufsliste_App\app
+-BP:\Projekte\Einkaufsliste\Einkaufsliste_App\app\.externalNativeBuild\cmake\release\x86_64
 -GAndroid Gradle - Ninja
 -DANDROID_ABI=x86_64
--DANDROID_NDK=C:\Users\Chris\AppData\Local\Android\Sdk\ndk-bundle
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\Chris\Desktop\Einkaufsliste-20170504T192843Z-001\Einkaufsliste\app\build\intermediates\cmake\release\obj\x86_64
+-DANDROID_NDK=D:\Programme\Android\sdk\ndk-bundle
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=P:\Projekte\Einkaufsliste\Einkaufsliste_App\app\build\intermediates\cmake\release\obj\x86_64
 -DCMAKE_BUILD_TYPE=Release
--DCMAKE_MAKE_PROGRAM=C:\Users\Chris\AppData\Local\Android\Sdk\cmake\3.6.3155560\bin\ninja.exe
--DCMAKE_TOOLCHAIN_FILE=C:\Users\Chris\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=D:\Programme\Android\sdk\cmake\3.6.3155560\bin\ninja.exe
+-DCMAKE_TOOLCHAIN_FILE=D:\Programme\Android\sdk\ndk-bundle\build\cmake\android.toolchain.cmake
 -DANDROID_PLATFORM=android-21
 -DCMAKE_CXX_FLAGS=-frtti -fexceptions
 jvmArgs : 
