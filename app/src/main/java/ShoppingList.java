@@ -26,6 +26,15 @@ public class ShoppingList {
         return this.COLUMN_NAME_NAME;
     }
 
+    public ShoppingList()
+    {
+
+    }
+
+    public ShoppingList(long id)
+    {
+        this.Id = id;
+    }
 
     public boolean Save()
     {
