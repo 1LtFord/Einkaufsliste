@@ -11,13 +11,26 @@ public class ShoppingList {
     private String TABLE_NAME = "ShoppingList";
     private String COLUMN_NAME_NAME = "Name";
 
-    public long GetId(){
+    public long GetId()
+    {
         return this.Id;
     }
 
+    public String GetTableName()
+    {
+        return this.TABLE_NAME;
+    }
+
+    public String GetColumnNameName()
+    {
+        return this.COLUMN_NAME_NAME;
+    }
+
+
     public boolean Save()
     {
-        if (this.Name == null || this.Name.length() <= 2){
+        if (this.Name == null || this.Name.length() <= 2)
+        {
             return false;
         }
 
