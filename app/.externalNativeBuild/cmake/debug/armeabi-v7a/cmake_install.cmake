@@ -1,4 +1,4 @@
-# Install script for directory: P:/Projekte/Einkaufsliste/Einkaufsliste_App/app
+# Install script for directory: E:/GitHub/Einkaufsliste_App/app
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "P:/Projekte/Einkaufsliste/Einkaufsliste_App/app/.externalNativeBuild/cmake/debug/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/debug/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

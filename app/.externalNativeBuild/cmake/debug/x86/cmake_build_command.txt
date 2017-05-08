@@ -1,14 +1,14 @@
-Executable : D:\Programme\Android\sdk\cmake\3.6.3155560\bin\cmake.exe
+Executable : C:\Users\Marcel\AppData\Local\Android\Sdk\cmake\3.6.3155560\bin\cmake.exe
 arguments : 
--HP:\Projekte\Einkaufsliste\Einkaufsliste_App\app
--BP:\Projekte\Einkaufsliste\Einkaufsliste_App\app\.externalNativeBuild\cmake\debug\x86
+-HE:\GitHub\Einkaufsliste_App\app
+-BE:\GitHub\Einkaufsliste_App\app\.externalNativeBuild\cmake\debug\x86
 -GAndroid Gradle - Ninja
 -DANDROID_ABI=x86
--DANDROID_NDK=D:\Programme\Android\sdk\ndk-bundle
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=P:\Projekte\Einkaufsliste\Einkaufsliste_App\app\build\intermediates\cmake\debug\obj\x86
+-DANDROID_NDK=C:\Users\Marcel\AppData\Local\Android\Sdk\ndk-bundle
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\GitHub\Einkaufsliste_App\app\build\intermediates\cmake\debug\obj\x86
 -DCMAKE_BUILD_TYPE=Debug
--DCMAKE_MAKE_PROGRAM=D:\Programme\Android\sdk\cmake\3.6.3155560\bin\ninja.exe
--DCMAKE_TOOLCHAIN_FILE=D:\Programme\Android\sdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\Users\Marcel\AppData\Local\Android\Sdk\cmake\3.6.3155560\bin\ninja.exe
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\Marcel\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake
 -DANDROID_PLATFORM=android-15
 -DCMAKE_CXX_FLAGS=-frtti -fexceptions
 jvmArgs : 
