@@ -1,6 +1,7 @@
 package com.example.einkaufsliste;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,12 +20,17 @@ public class AddItem extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newList);
         fab.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                View et = findViewById(R.id.ti_newListName);
+                if (et.getVisibility() == view.INVISIBLE) {
+                    et.setVisibility(View.VISIBLE);
+                }
+                else {
+                    et.setVisibility(View.INVISIBLE);
+                }
+
             }
         });
 
