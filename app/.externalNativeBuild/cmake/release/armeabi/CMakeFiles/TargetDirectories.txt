@@ -1,3 +1,0 @@
-C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/native-lib.dir
-C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/edit_cache.dir
-C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/rebuild_cache.dir
