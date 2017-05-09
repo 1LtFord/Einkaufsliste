@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/view_start"
+    <include layout="@layout/view_listoverview"
         android:id="@+id/include" />
 
     <android.support.design.widget.FloatingActionButton

@@ -1,9 +1,12 @@
 
 {
-	"buildFiles" : [ "E:/GitHub/Einkaufsliste_App/app/CMakeLists.txt" ],
+	"buildFiles" : 
+	[
+		"C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/CMakeLists.txt"
+	],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target clean"
+		"C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build C:\\Users\\Marcel\\Documents\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -12,18 +15,18 @@
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "native-lib",
-			"buildCommand" : "C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native-lib",
+			"buildCommand" : "C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build C:\\Users\\Marcel\\Documents\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native-lib",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
 					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/Marcel/AppData/Local/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Marcel/AppData/Local/Android/sdk/ndk-bundle/platforms/android-15/arch-arm  -Dnative_lib_EXPORTS -isystem C:\\Users\\Marcel\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Marcel\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\Marcel\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -frtti -fexceptions -Os -DNDEBUG -Os -DNDEBUG  -fPIC    -c ",
-					"src" : "E:/GitHub/Einkaufsliste_App/app/src/main/cpp/native-lib.cpp",
-					"workingDirectory" : "E:/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"src" : "C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "E:/GitHub/Einkaufsliste_App/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-lib.so",
+			"output" : "C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-lib.so",
 			"toolchain" : "4083856165"
 		}
 	},

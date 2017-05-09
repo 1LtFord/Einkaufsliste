@@ -1,9 +1,12 @@
 
 {
-	"buildFiles" : [ "E:/GitHub/Einkaufsliste_App/app/CMakeLists.txt" ],
+	"buildFiles" : 
+	[
+		"C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/CMakeLists.txt"
+	],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target clean"
+		"C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build C:\\Users\\Marcel\\Documents\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -12,18 +15,18 @@
 		{
 			"abi" : "arm64-v8a",
 			"artifactName" : "native-lib",
-			"buildCommand" : "C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target native-lib",
+			"buildCommand" : "C:\\Users\\Marcel\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build C:\\Users\\Marcel\\Documents\\GitHub\\Einkaufsliste_App\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target native-lib",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
 					"flags" : "  --target=aarch64-none-linux-android --gcc-toolchain=C:/Users/Marcel/AppData/Local/Android/sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Marcel/AppData/Local/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64  -Dnative_lib_EXPORTS -isystem C:\\Users\\Marcel\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Marcel\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\arm64-v8a\\include -isystem C:\\Users\\Marcel\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -frtti -fexceptions -O2 -DNDEBUG -O2 -DNDEBUG  -fPIC    -c ",
-					"src" : "E:/GitHub/Einkaufsliste_App/app/src/main/cpp/native-lib.cpp",
-					"workingDirectory" : "E:/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/arm64-v8a"
+					"src" : "C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/.externalNativeBuild/cmake/release/arm64-v8a"
 				}
 			],
-			"output" : "E:/GitHub/Einkaufsliste_App/app/build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so",
+			"output" : "C:/Users/Marcel/Documents/GitHub/Einkaufsliste_App/app/build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so",
 			"toolchain" : "4083856165"
 		}
 	},

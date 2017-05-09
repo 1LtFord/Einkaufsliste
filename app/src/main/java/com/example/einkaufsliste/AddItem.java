@@ -1,7 +1,12 @@
 package com.example.einkaufsliste;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.INotificationSideChannel;
+import android.view.ViewStub;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,14 +28,13 @@ public class AddItem extends AppCompatActivity {
        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newList);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                View et = findViewById(R.id.ti_newListName);
-                if (et.getVisibility() == view.INVISIBLE) {
-                    et.setVisibility(View.VISIBLE);
-                }
-                else {
-                    et.setVisibility(View.INVISIBLE);
-                }
-
+                //View et = findViewById(R.id.ti_newListName);
+                //if (et.getVisibility() == view.INVISIBLE) {
+                //    et.setVisibility(View.VISIBLE);
+                //}
+                //else {
+                //    et.setVisibility(View.INVISIBLE);
+                //}
             }
         });
 
