@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Einkaufsliste</string>
+    <string name="app_name">Shoppinglist</string>
+    <string name="new_Shoppinglist">New Shoppinglist</string>
+    <string name="cd_new_Shoppinglist">Creates new Shoppinglist</string>
 </resources>
