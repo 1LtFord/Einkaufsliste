@@ -3,12 +3,12 @@ package letschert_ruh.einkaufsliste.GUI.Activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import letschert_ruh.einkaufsliste.Handler.Handler_ShoppinglistOverview;
 import letschert_ruh.einkaufsliste.R;
 import letschert_ruh.einkaufsliste.GUI.Adapter.Adapter_ShoppingList_Overview;
 import letschert_ruh.einkaufsliste.GUI.Data.GUI_Data_ShoppingList_Overview;
@@ -48,10 +48,18 @@ public class Activity_ListOverview extends Activity {
 
         listView1 = (ListView)findViewById(R.id.lv_ListsOverview);
 
-        View header = (View)getLayoutInflater().inflate(R.layout.element_listview_shoppinglist_newlist, null);
+        View header = (View)getLayoutInflater().inflate(R.layout.element_listview_newlist, null);
         listView1.addHeaderView(header);
 
         listView1.setAdapter(adapter);
+
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //TODO
+            }
+        });
     }
 
 

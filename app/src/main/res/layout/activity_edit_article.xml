@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="letschert_ruh.einkaufsliste.GUI.Activities.Activity_ArticleOverview">
+    tools:context="letschert_ruh.einkaufsliste.GUI.Activities.ActivityEditArticle">
 
 </android.support.constraint.ConstraintLayout>
