@@ -11,17 +11,16 @@
         android:id="@+id/txtv_Name"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:text="Wocheneinkauf"
-        android:textColor="@color/colorText"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtv_CheckedTotal"
@@ -32,7 +31,6 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:text="20/40"
-        android:textColor="@color/colorText"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/txtv_Total"
@@ -47,7 +45,6 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:text="1000,00€"
-        android:textColor="@color/colorText"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
