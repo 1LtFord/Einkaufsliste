@@ -2,9 +2,13 @@ package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,8 @@ public class Activity_ListOverview extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_overview);
+
+
 
         //TODO Nach Test von Handler aktivieren!
         //Fertige Implementierung:
@@ -60,6 +66,13 @@ public class Activity_ListOverview extends Activity {
                 //TODO
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.global, menu);
+        return true;
     }
 
 

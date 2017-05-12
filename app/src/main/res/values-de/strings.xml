@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Einkaufsliste</string>
+    <string name="app_name">Einkaufslisten</string>
     <string name="new_Shoppinglist">Neue Einkaufsliste</string>
     <string name="cd_new_Shoppinglist">Erstellt eine neue Einkaufsliste</string>
+    <string name="title_activity_navigation"></string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_Articles">Artikel</string>
 </resources>
