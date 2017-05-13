@@ -38,7 +38,7 @@ public class ShoppingList {
         this.Id = id;
     }
 
-    public boolean Save()
+    public boolean SaveOrUpdate()
     {
         if (this.Name == null || this.Name.length() <= 2)
         {
@@ -50,8 +50,19 @@ public class ShoppingList {
         ContentValues values = new ContentValues();
         values.put(this.COLUMN_NAME_NAME, this.Name);
 
-        long newRowId = db.insert(this.TABLE_NAME, null, values);
-        this.Id = newRowId;
+        if(this.Id == 0){
+            long newRowId = db.insert(this.TABLE_NAME, null, values);
+            this.Id = newRowId;
+        }else{
+            String selection = "_ID" + " = ?";
+            String[] selectionArgs = { "[" + this.Id + "]" };
+
+            db.update(
+               this.TABLE_NAME,
+               values,
+               selection,
+               selectionArgs);
+        }
 
         return true;
     }

@@ -16,7 +16,7 @@ public class ListPositionQueries {
         ListPosition position = new ListPosition();
 
         String[] projection = {
-                "ID",
+                "_ID",
                 position.GetColumnNameArticle(),
                 position.GetColumnNameAmount(),
                 position.GetColumnNameChecked(),
@@ -39,7 +39,7 @@ public class ListPositionQueries {
 
         while(cursor.moveToNext()) {
             long itemId = cursor.getLong(
-                    cursor.getColumnIndexOrThrow("ID"));
+                    cursor.getColumnIndexOrThrow("_ID"));
 
             ListPosition item = new ListPosition(itemId);
             ArticleQueries articleQueries = new ArticleQueries();

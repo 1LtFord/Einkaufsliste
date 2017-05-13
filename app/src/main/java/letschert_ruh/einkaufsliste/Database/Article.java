@@ -50,7 +50,7 @@ public class Article {
         this.Id = id;
     }
 
-    public boolean Save()
+    public boolean SaveOrUpdate()
     {
         if (this.Name == null || this.Name.length() <= 2){
             return false;
@@ -65,8 +65,19 @@ public class Article {
         values.put(this.COLUMN_NAME_MANUFACTURER, this.Manufacturer);
         values.put(this.COLUMN_NAME_COST, this.Cost);
 
-        long newRowId = db.insert(this.TABLE_NAME, null, values);
-        this.Id = newRowId;
+        if(this.Id == 0){
+            long newRowId = db.insert(this.TABLE_NAME, null, values);
+            this.Id = newRowId;
+        }else{
+            String selection = "_ID" + " = ?";
+            String[] selectionArgs = { "[" + this.Id + "]" };
+
+            db.update(
+               this.TABLE_NAME,
+               values,
+               selection,
+               selectionArgs);
+        }
 
         return true;
     }

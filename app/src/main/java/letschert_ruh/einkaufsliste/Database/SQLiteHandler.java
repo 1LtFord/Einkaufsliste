@@ -17,7 +17,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_TABLE_ARTICLE =
             "CREATE TABLE " + article.GetTableName() + " (" +
-                    "ID" + " INTEGER PRIMARY KEY," +
+                    "_ID" + " INTEGER PRIMARY KEY," +
                     article.GetColumnNameName() + " TEXT," +
                     article.GetColumnNameMerchant() + " TEXT," +
                     article.GetColumnNameManufacturer() + " TEXT," +
@@ -25,7 +25,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_TABLE_LISTPOSITION =
             "CREATE TABLE " + listPosition.GetTableName() + " (" +
-                    "ID" + " INTEGER PRIMARY KEY," +
+                    "_ID" + " INTEGER PRIMARY KEY," +
                     listPosition.GetColumnNameArticle() + " INTEGER," +
                     listPosition.GetColumnNameAmount() + " INTEGER," +
                     listPosition.GetColumnNameArticle() + " INTEGER," +
@@ -34,7 +34,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_TABLE_SHOPPINGLIST =
             "CREATE TABLE " + shoppingList.GetTableName() + " (" +
-                    "ID" + " INTEGER PRIMARY KEY," +
+                    "_ID" + " INTEGER PRIMARY KEY," +
                     shoppingList.GetColumnNameName() + " TEXT)";
 
     public SQLiteHandler(Context context) {

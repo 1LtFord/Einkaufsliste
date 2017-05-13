@@ -17,7 +17,7 @@ public class ShoppingListQueries {
         ShoppingList list = new ShoppingList();
 
         String[] projection = {
-                "ID",
+                "_ID",
                 list.GetColumnNameName()
         };
 
@@ -35,7 +35,7 @@ public class ShoppingListQueries {
 
         while(cursor.moveToNext()) {
             long itemId = cursor.getLong(
-                    cursor.getColumnIndexOrThrow("ID"));
+                    cursor.getColumnIndexOrThrow("_ID"));
 
             ShoppingList item = new ShoppingList(itemId);
 

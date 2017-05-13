@@ -55,7 +55,7 @@ public class ListPosition {
         this.Id = id;
     }
 
-    public boolean Save()
+    public boolean SaveOrUpdate()
     {
         if (this.Article == null || this.Article.GetId() == 0){
             return false;
@@ -75,8 +75,19 @@ public class ListPosition {
         values.put(this.COLUMN_NAME_CHECKED, this.Checked);
         values.put(this.COLUMN_NAME_SHOPPINGLIST, this.ShoppingList.GetId());
 
-        long newRowId = db.insert(this.TABLE_NAME, null, values);
+        if(this.Id == 0){
+            long newRowId = db.insert(this.TABLE_NAME, null, values);
+            this.Id = newRowId;
+        }else{
+            String selection = "_ID" + " = ?";
+            String[] selectionArgs = { "[" + this.Id + "]" };
 
+            db.update(
+                this.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        }
         return true;
     }
 
