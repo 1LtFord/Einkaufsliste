@@ -5,15 +5,17 @@
     <string name="title_activity_test">Test</string>
     <string name="title_activity_navigation">Navigation</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
     <string name="action_Articles">Articles</string>
+    <string name="action_Save">Save</string>
+    <string name="hint_ArticleName">Article Name</string>
+    <string name="hint_Manufacturer">Manufacturer</string>
+    <string name="hint_Merchant">Merchant</string>
+    <string name="hint_Cost">Cost</string>
+    <string name="hint_SearchArticles">Search Articles</string>
+    <string name="action_EditArticles">Edit Articles</string>
+    <string name="action_NewArticle">New Article</string>
+    <string name="cd_new_article">Creates a new Article</string>
 </resources>

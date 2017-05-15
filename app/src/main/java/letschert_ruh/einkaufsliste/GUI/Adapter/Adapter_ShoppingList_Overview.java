@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-import org.w3c.dom.Text;
-
 import letschert_ruh.einkaufsliste.GUI.Data.GUI_Data_ShoppingList_Overview;
 import letschert_ruh.einkaufsliste.R;
 
@@ -37,7 +35,7 @@ public class Adapter_ShoppingList_Overview extends ArrayAdapter<GUI_Data_Shoppin
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new Holder_ShoppingList_Overview();
-            holder.Name = (TextView)row.findViewById(R.id.txtv_Name);
+            holder.Name = (TextView)row.findViewById(R.id.tv_Name);
             holder.CheckedTotal = (TextView)row.findViewById(R.id.txtv_CheckedTotal);
             holder.Total = (TextView)row.findViewById(R.id.txtv_Total);
 

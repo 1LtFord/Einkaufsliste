@@ -1,14 +1,14 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,9 @@ public class Activity_ListOverview extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_overview);
 
+        //Nicht benötigt da Startbildschirm
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
+        //setTitle("Test");
 
 
         //TODO Nach Test von Handler aktivieren!
@@ -36,7 +39,7 @@ public class Activity_ListOverview extends Activity {
         //TODO Nach Test von Handler deaktivieren!
         //Test:
         List<GUI_Data_ShoppingList_Overview> testdaten = new ArrayList<GUI_Data_ShoppingList_Overview>();
-        for(int i = 0; i < 10; i++){
+        for(long i = 0; i < 10; i++){
             String name = ("Einkaufsliste " + i);
             String CheckedTotal = ((i+10) + "/" + (i + 20));
             String Total = ((i * 100) + ",90");
@@ -63,7 +66,7 @@ public class Activity_ListOverview extends Activity {
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO
+
             }
         });
     }
@@ -72,7 +75,34 @@ public class Activity_ListOverview extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.global, menu);
+
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_EditArticles:
+                Action_OpenArticleOverview();
+                return true;
+            case R.id.action_AddArticle:
+                Action_AddArticle();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void Action_OpenArticleOverview()
+    {
+        Intent intent = new Intent(this, Activity_ArticleOverview.class);
+        startActivity(intent);
+    }
+
+    private void Action_AddArticle()
+    {
+        Intent intent = new Intent(this, Activity_EditArticle.class);
+        startActivity(intent);
     }
 
 

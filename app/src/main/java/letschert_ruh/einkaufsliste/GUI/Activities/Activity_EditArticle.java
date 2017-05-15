@@ -1,11 +1,11 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import letschert_ruh.einkaufsliste.R;
 
-public class ActivityEditArticle extends AppCompatActivity {
+public class Activity_EditArticle extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
