@@ -28,7 +28,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                     "_ID" + " INTEGER PRIMARY KEY," +
                     listPosition.GetColumnNameArticle() + " INTEGER," +
                     listPosition.GetColumnNameAmount() + " INTEGER," +
-                    listPosition.GetColumnNameArticle() + " INTEGER," +
                     listPosition.GetColumnNameShoppingList() + " INTEGER," +
                     listPosition.GetColumnNameChecked() + " INTEGER)";
 

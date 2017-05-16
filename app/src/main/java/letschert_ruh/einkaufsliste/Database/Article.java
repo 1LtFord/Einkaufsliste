@@ -1,6 +1,7 @@
 package letschert_ruh.einkaufsliste.Database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class Article {
@@ -9,6 +10,7 @@ public class Article {
     public String Manufacturer;
     public double Cost;
 
+    private Context context;
     private long Id = 0;
     private String TABLE_NAME = "Article";
     private String COLUMN_NAME_NAME = "Name";
@@ -50,13 +52,20 @@ public class Article {
         this.Id = id;
     }
 
+    public Article(Context context){this.context = context;}
+
+    public Article(long id, Context context){
+        this.Id = id;
+        this.context = context;
+    }
+
     public boolean SaveOrUpdate()
     {
         if (this.Name == null || this.Name.length() <= 2){
             return false;
         }
 
-        SQLiteDatabase db = new SQLiteHandler(null).getWritableDatabase();
+        SQLiteDatabase db = new SQLiteHandler(context).getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();

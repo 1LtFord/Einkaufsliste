@@ -1,7 +1,6 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,8 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import letschert_ruh.einkaufsliste.Database.Article;
 import letschert_ruh.einkaufsliste.R;
@@ -140,7 +137,7 @@ public class Activity_EditArticle extends Activity {
     }
 
     private void SaveArticleToDatabase(){
-        Article newArticle = new Article();
+        Article newArticle = new Article(this);
         boolean complete = true;
 
         if (this.NewName.getText().toString().length() > 0){
@@ -163,7 +160,7 @@ public class Activity_EditArticle extends Activity {
         }
 
         if(complete){
-            //newArticle.SaveOrUpdate();
+            newArticle.SaveOrUpdate();
             //TODO Intend
         }
         else{
