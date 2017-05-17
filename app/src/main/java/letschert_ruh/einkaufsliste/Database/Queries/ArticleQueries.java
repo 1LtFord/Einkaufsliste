@@ -82,19 +82,19 @@ public class ArticleQueries {
         String[] doubledSearchStrings = new String[searchStrings.length * 2];
         for(int i = 0; i < searchStrings.length; i++)
         {
-            doubledSearchStrings[i] = "'%" + searchStrings[i] + "%'";
-            doubledSearchStrings[i + 1] = "'%" + searchStrings[i] + "%'";
+            doubledSearchStrings[i * 2] = "'%" + searchStrings[i] + "%'";
+            doubledSearchStrings[i * 2 + 1] = "'%" + searchStrings[i] + "%'";
         }
 
-        String selection = article.GetColumnNameName() + " like ? ";
-        selection += "or " + article.GetColumnNameManufacturer() + " like ? ";
+        String selection = article.GetColumnNameName() + " like ?";
+        selection += " or " + article.GetColumnNameManufacturer() + " like ?";
         for (int i = 1; i < searchStrings.length; i++)
         {
-            selection += "or " + article.GetColumnNameName() + " like ?";
-            selection += "or " + article.GetColumnNameManufacturer() + " like ?";
+            selection += " or " + article.GetColumnNameName() + " like ?";
+            selection += " or " + article.GetColumnNameManufacturer() + " like ?";
         }
 
-        String query = "Select * from " + article.GetTableName() + " where " + selection;
+        String query = "Select * from " + article.GetTableName() + " where " + selection + " ;";
         Cursor cursor = db.rawQuery(query, doubledSearchStrings);
         //Cursor cursor = db.query(article.GetTableName(),projection,selection,doubledSearchStrings,null,null,null);
 

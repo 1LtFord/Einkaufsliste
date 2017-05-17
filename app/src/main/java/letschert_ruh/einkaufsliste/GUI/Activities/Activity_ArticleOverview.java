@@ -32,6 +32,10 @@ public class Activity_ArticleOverview extends Activity {
         this.ArticleListView = (ListView)findViewById(R.id.lv_Article_List);
         this.SearchText = (EditText)findViewById(R.id.et_Searchbar);
 
+        String[] test = new String[]{"test", "array", "testing"};
+        ArticleQueries queries = new ArticleQueries();
+        List<Article> i = queries.GetByNameOrManufacturer(test, this);
+
         setSearchbarListener();
         setListViewOnClickListener();
 

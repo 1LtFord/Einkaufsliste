@@ -31,11 +31,11 @@ public class Article {
     }
 
     public String GetColumnNameMerchant(){
-        return this.COLUMN_NAME_MANUFACTURER;
+        return this.COLUMN_NAME_MERCHANT;
     }
 
     public String GetColumnNameManufacturer(){
-        return this.COLUMN_NAME_MERCHANT;
+        return this.COLUMN_NAME_MANUFACTURER;
     }
 
     public String GetColumnNameCost(){
