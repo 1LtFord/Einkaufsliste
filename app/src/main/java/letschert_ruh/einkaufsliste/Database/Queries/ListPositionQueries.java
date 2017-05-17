@@ -1,5 +1,6 @@
 package letschert_ruh.einkaufsliste.Database.Queries;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import letschert_ruh.einkaufsliste.Database.SQLiteHandler;
 import letschert_ruh.einkaufsliste.Database.ShoppingList;
 
 public class ListPositionQueries {
-    public List<ListPosition> GetByShoppingList(ShoppingList shoppingList){
+    public List<ListPosition> GetByShoppingList(ShoppingList shoppingList, Context context){
         SQLiteDatabase db = new SQLiteHandler(null).getReadableDatabase();
 
         ListPosition position = new ListPosition();
@@ -45,7 +46,7 @@ public class ListPositionQueries {
             ArticleQueries articleQueries = new ArticleQueries();
 
             item.Article = articleQueries.GetById(cursor.getLong(
-                    cursor.getColumnIndexOrThrow(position.GetColumnNameArticle())));
+                    cursor.getColumnIndexOrThrow(position.GetColumnNameArticle())), context);
 
             item.Amount = cursor.getInt(
                     cursor.getColumnIndexOrThrow(position.GetColumnNameAmount()));

@@ -49,10 +49,6 @@ public class Activity_ListOverview extends Activity {
         //----------------------------------------
 
 
-
-
-
-
         Adapter_ShoppingList_Overview adapter = new Adapter_ShoppingList_Overview(this, R.layout.element_listview_shoppinglist_overview, Overview_Data);
 
         listView1 = (ListView)findViewById(R.id.lv_ListsOverview);

@@ -1,6 +1,7 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,6 +33,7 @@ public class Activity_EditArticle extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_article);
+        setTitle(getString(R.string.title_NewArticle));
 
         this.Name = (TextView)findViewById(R.id.tv_Name);
         this.Merchant = (TextView)findViewById(R.id.tv_Merchant);
@@ -161,7 +163,9 @@ public class Activity_EditArticle extends Activity {
 
         if(complete){
             newArticle.SaveOrUpdate();
-            //TODO Intend
+            Intent intent = new Intent(this, Activity_ArticleOverview.class);
+            intent.putExtra("Articlename", newArticle.Name);
+            startActivity(intent);
         }
         else{
             Toast.makeText(getApplicationContext(),getString(R.string.error_NewArticle_EmptyName), Toast.LENGTH_SHORT).show();

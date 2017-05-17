@@ -1,5 +1,6 @@
 package letschert_ruh.einkaufsliste.Database.Queries;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -10,8 +11,8 @@ import letschert_ruh.einkaufsliste.Database.Article;
 import letschert_ruh.einkaufsliste.Database.SQLiteHandler;
 
 public class ArticleQueries {
-    public Article GetById(long id){
-        SQLiteDatabase db = new SQLiteHandler(null).getReadableDatabase();
+    public Article GetById(long id, Context context){
+        SQLiteDatabase db = new SQLiteHandler(context).getReadableDatabase();
 
         Article article = new Article();
 
@@ -61,12 +62,12 @@ public class ArticleQueries {
         return result;
     };
 
-    public List<Article> GetByNameOrManufacturer(String[] searchStrings){
+    public List<Article> GetByNameOrManufacturer(String[] searchStrings, Context context){
         if (searchStrings == null ||searchStrings.length == 0){
             return null;
         }
 
-        SQLiteDatabase db = new SQLiteHandler(null).getReadableDatabase();
+        SQLiteDatabase db = new SQLiteHandler(context).getReadableDatabase();
 
         Article article = new Article();
 
@@ -79,26 +80,28 @@ public class ArticleQueries {
         };
 
         String[] doubledSearchStrings = new String[searchStrings.length * 2];
-        for(int i = 0; i <= searchStrings.length; i++)
+        for(int i = 0; i < searchStrings.length; i++)
         {
-            doubledSearchStrings[i] = searchStrings[i];
-            doubledSearchStrings[i + 1] = searchStrings[i];
+            doubledSearchStrings[i] = "'%" + searchStrings[i] + "%'";
+            doubledSearchStrings[i + 1] = "'%" + searchStrings[i] + "%'";
         }
 
-        String selection = article.GetColumnNameName() + "match ? ";
-        selection = "or" + article.GetColumnNameManufacturer() + "match ? ";
-        for (int i = 1; i <= searchStrings.length; i++)
+        String selection = article.GetColumnNameName() + " like ? ";
+        selection += "or " + article.GetColumnNameManufacturer() + " like ? ";
+        for (int i = 1; i < searchStrings.length; i++)
         {
-            selection += "or" + article.GetColumnNameName() + "match ?";
-            selection += "or" + article.GetColumnNameManufacturer() + "match ?";
+            selection += "or " + article.GetColumnNameName() + " like ?";
+            selection += "or " + article.GetColumnNameManufacturer() + " like ?";
         }
 
-        Cursor cursor = db.rawQuery("Select * from " + article.GetTableName() + "where " + selection, doubledSearchStrings);
+        String query = "Select * from " + article.GetTableName() + " where " + selection;
+        Cursor cursor = db.rawQuery(query, doubledSearchStrings);
+        //Cursor cursor = db.query(article.GetTableName(),projection,selection,doubledSearchStrings,null,null,null);
 
         List<Article> result = new ArrayList<Article>();
         Article resultItem = null;
         while(cursor.moveToNext()) {
-            resultItem = new Article();
+            //resultItem = new Article();
 
             resultItem = new Article(cursor.getLong(
                     cursor.getColumnIndexOrThrow("_ID")));

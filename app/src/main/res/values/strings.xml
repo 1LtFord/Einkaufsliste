@@ -19,4 +19,5 @@
     <string name="action_NewArticle">New Article</string>
     <string name="cd_new_article">Creates a new Article</string>
     <string name="error_NewArticle_EmptyName">Please add a name to the article</string>
+    <string name="title_NewArticle">New Article</string>
 </resources>
