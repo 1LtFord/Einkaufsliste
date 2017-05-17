@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SQLiteHandler extends SQLiteOpenHelper {
     // Version & Name
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Einkaufsliste.db";
+    public static final String DATABASE_NAME = "Einkaufsliste";
     public static SQLiteDatabase DB;
 
     private static Article article = new Article();
@@ -49,7 +49,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
-        //db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL("DROP TABLE IF EXISTS " + article.GetTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + listPosition.GetTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + shoppingList.GetTableName());
         onCreate(db);
     }
 

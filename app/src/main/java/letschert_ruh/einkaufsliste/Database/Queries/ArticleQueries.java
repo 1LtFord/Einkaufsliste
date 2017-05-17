@@ -79,48 +79,44 @@ public class ArticleQueries {
                 article.GetColumnNameCost()
         };
 
-        String[] doubledSearchStrings = new String[searchStrings.length * 2];
-        for(int i = 0; i < searchStrings.length; i++)
-        {
-            doubledSearchStrings[i * 2] = "'%" + searchStrings[i] + "%'";
-            doubledSearchStrings[i * 2 + 1] = "'%" + searchStrings[i] + "%'";
-        }
-
-        String selection = article.GetColumnNameName() + " like ?";
-        selection += " or " + article.GetColumnNameManufacturer() + " like ?";
+        String selection = article.GetColumnNameName() + " like " + "'%" +  searchStrings[0] + "%'";
+        selection += " or " + article.GetColumnNameManufacturer() + " like " + "'%" + searchStrings[0] + "%'";
         for (int i = 1; i < searchStrings.length; i++)
         {
-            selection += " or " + article.GetColumnNameName() + " like ?";
-            selection += " or " + article.GetColumnNameManufacturer() + " like ?";
+            selection += " or " + article.GetColumnNameName() + " like " + "'%" + searchStrings[i] + "%'";
+            selection += " or " + article.GetColumnNameManufacturer() + " like " + "'%"  + searchStrings[i] + "%'";
         }
 
         String query = "Select * from " + article.GetTableName() + " where " + selection + " ;";
-        Cursor cursor = db.rawQuery(query, doubledSearchStrings);
+        Cursor cursor = db.rawQuery(query, null);
         //Cursor cursor = db.query(article.GetTableName(),projection,selection,doubledSearchStrings,null,null,null);
 
         List<Article> result = new ArrayList<Article>();
         Article resultItem = null;
-        while(cursor.moveToNext()) {
-            //resultItem = new Article();
+        if (cursor.moveToFirst()) {
+            do {
 
-            resultItem = new Article(cursor.getLong(
-                    cursor.getColumnIndexOrThrow("_ID")));
+                resultItem = new Article(cursor.getLong(
+                        cursor.getColumnIndexOrThrow("_ID")));
 
-            resultItem.Name = cursor.getString(
-                    cursor.getColumnIndexOrThrow(article.GetColumnNameName()));
+                resultItem.Name = cursor.getString(
+                        cursor.getColumnIndexOrThrow(article.GetColumnNameName()));
 
-            resultItem.Merchant = cursor.getString(
-                    cursor.getColumnIndexOrThrow(article.GetColumnNameMerchant()));
+                resultItem.Merchant = cursor.getString(
+                        cursor.getColumnIndexOrThrow(article.GetColumnNameMerchant()));
 
-            resultItem.Manufacturer = cursor.getString(
-                    cursor.getColumnIndexOrThrow(article.GetColumnNameManufacturer()));
+                resultItem.Manufacturer = cursor.getString(
+                        cursor.getColumnIndexOrThrow(article.GetColumnNameManufacturer()));
 
-            resultItem.Cost = cursor.getDouble(
-                    cursor.getColumnIndexOrThrow(article.GetColumnNameCost()));
+                resultItem.Cost = cursor.getDouble(
+                        cursor.getColumnIndexOrThrow(article.GetColumnNameCost()));
 
-            result.add(resultItem);
+                result.add(resultItem);
+            } while (cursor.moveToNext());
         }
+
         cursor.close();
+        db.close();
 
         if (result == null){
             return null;
