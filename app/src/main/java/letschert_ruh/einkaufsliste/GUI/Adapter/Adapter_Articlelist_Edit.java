@@ -45,10 +45,13 @@ public class Adapter_Articlelist_Edit extends ArrayAdapter<Article>{
          }
 
          Article ha = data[position];
-         holder.Name.setText(ha.Name);
-         holder.Merchant.setText(ha.Manufacturer);
-         holder.Cost.setText(String.valueOf(ha.Cost));
 
+         holder.Name.setText(ha.Name);
+         if(ha.Merchant != null){ holder.Merchant.setText(ha.Merchant);}
+         else {holder.Merchant.setText("");}
+         if(ha.Manufacturer != null){ holder.Manufacturer.setText(ha.Manufacturer);}
+         else {holder.Manufacturer.setText("");}
+         holder.Cost.setText(ha.GetCurrencyString());
 
          return row;
      }
@@ -59,5 +62,7 @@ public class Adapter_Articlelist_Edit extends ArrayAdapter<Article>{
         TextView Manufacturer;
         TextView Cost;
     }
+
+
 
 }

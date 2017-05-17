@@ -1,10 +1,14 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -39,13 +43,38 @@ public class Activity_ArticleOverview extends Activity {
         setSearchbarListener();
         setListViewOnClickListener();
 
+        Search("");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.articleoverview, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_AddArticle:
+                Action_AddArticle();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void Action_AddArticle()
+    {
+        Intent intent = new Intent(this, Activity_EditArticle.class);
+        startActivity(intent);
     }
 
     private void setListViewOnClickListener(){
         ArticleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                //TODO
             }
         });
     }
@@ -73,7 +102,7 @@ public class Activity_ArticleOverview extends Activity {
         ArticleQueries queries = new ArticleQueries();
         List<Article> Articles = queries.GetByNameOrManufacturer(SplitSearchString(s), this);
 
-        Adapter_Articlelist_Edit adapter = new Adapter_Articlelist_Edit(this,R.id.lv_Article_List,Articles.toArray(new Article[Articles.size()]));
+        Adapter_Articlelist_Edit adapter = new Adapter_Articlelist_Edit(this,R.layout.element_articlelist_article,Articles.toArray(new Article[Articles.size()]));
         ArticleListView.setAdapter(adapter);
     }
 
