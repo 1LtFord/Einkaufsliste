@@ -1,6 +1,7 @@
 package letschert_ruh.einkaufsliste.Database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.List;
@@ -38,14 +39,14 @@ public class ShoppingList {
         this.Id = id;
     }
 
-    public boolean SaveOrUpdate()
+    public boolean SaveOrUpdate(Context context)
     {
         if (this.Name == null || this.Name.length() <= 2)
         {
             return false;
         }
 
-        SQLiteDatabase db = new SQLiteHandler(null).getWritableDatabase();
+        SQLiteDatabase db = new SQLiteHandler(context).getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(this.COLUMN_NAME_NAME, this.Name);
