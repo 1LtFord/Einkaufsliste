@@ -17,4 +17,8 @@
     <string name="cd_new_article">Erstellt einen neuen Artikel</string>
     <string name="error_NewArticle_EmptyName">Bitte geben sie dem Artikel einen Namen</string>
     <string name="title_NewArticle">Neuer Artikel</string>
+    <string name="action_ok">OK</string>
+    <string name="action_example"></string>
+    <string name="action_cancel">Abbrechen</string>
+    <string name="hint_newShoppinglist">Name</string>
 </resources>

@@ -36,7 +36,7 @@ public class Adapter_Articlelist_Edit extends ArrayAdapter<Article>{
              holder.Name = (TextView)row.findViewById(R.id.tv_Name);
              holder.Merchant = (TextView)row.findViewById(R.id.tv_Merchant);
              holder.Manufacturer = (TextView)row.findViewById(R.id.tv_Manufacturer);
-             holder.Cost = (TextView)row.findViewById(R.id.tv_Price);
+             holder.Cost = (TextView)row.findViewById(R.id.tv_Cost);
 
              row.setTag(holder);
          }
