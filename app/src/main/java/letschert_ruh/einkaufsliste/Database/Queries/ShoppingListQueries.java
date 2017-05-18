@@ -1,5 +1,6 @@
 package letschert_ruh.einkaufsliste.Database.Queries;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,8 +12,8 @@ import letschert_ruh.einkaufsliste.Database.ShoppingList;
 
 
 public class ShoppingListQueries {
-    public List<ShoppingList> GetAll(){
-        SQLiteDatabase db = new SQLiteHandler(null).getReadableDatabase();
+    public List<ShoppingList> GetAll(Context context){
+        SQLiteDatabase db = new SQLiteHandler(context).getReadableDatabase();
 
         ShoppingList list = new ShoppingList();
 

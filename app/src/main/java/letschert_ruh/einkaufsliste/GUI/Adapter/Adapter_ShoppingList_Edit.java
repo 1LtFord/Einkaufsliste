@@ -54,7 +54,7 @@ public class Adapter_ShoppingList_Edit extends ArrayAdapter<ListPosition> {
         ListPosition p = data[position];
         holder.Name.setText(p.Article.Name);
         holder.Count.setText(p.Amount);
-        //Todo holder.Cost.setText();
+        holder.Cost.setText(p.Article.GetCurrencyString());
         holder.ItemChecked.setChecked(p.Checked);
         holder.Manufacturer.setText(p.Article.Manufacturer);
         holder.Merchant.setText(p.Article.Merchant);

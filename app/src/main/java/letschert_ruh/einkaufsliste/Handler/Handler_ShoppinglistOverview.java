@@ -2,6 +2,7 @@ package letschert_ruh.einkaufsliste.Handler;
 
 
 import android.animation.TypeConverter;
+import android.content.Context;
 import android.view.ViewDebug;
 import android.view.accessibility.AccessibilityManager;
 
@@ -18,10 +19,10 @@ public class Handler_ShoppinglistOverview {
     //TODO TESTEN!
 
 
-    public List<GUI_Data_ShoppingList_Overview> GetOverviewData(){
+    public List<GUI_Data_ShoppingList_Overview> GetOverviewData(Context context){
 
         ShoppingListQueries slq = new ShoppingListQueries();
-        List<ShoppingList> shoppingList = slq.GetAll();
+        List<ShoppingList> shoppingList = slq.GetAll(context);
 
         return Prepare_ShoppingList_Overview_Data(shoppingList);
     }
@@ -30,9 +31,13 @@ public class Handler_ShoppinglistOverview {
         List<GUI_Data_ShoppingList_Overview>    Overview_Data   = new ArrayList<GUI_Data_ShoppingList_Overview>();
 
         for(int i = 0; i < shoppingList.size(); i++){
-            Overview_Data.add(new GUI_Data_ShoppingList_Overview(shoppingList.get(i).Name,
-                                                                 Prepare_Shoppinglist_CheckedTotal(shoppingList.get(i).Positions),
-                                                                 Prepare_Shoppinglist_Total(shoppingList.get(i).Positions)));
+            GUI_Data_ShoppingList_Overview ov = new GUI_Data_ShoppingList_Overview();
+
+            ov.Name = shoppingList.get(i).Name;
+            ov.CheckedTotal = Prepare_Shoppinglist_CheckedTotal(shoppingList.get(i).Positions);
+            ov.Total = Prepare_Shoppinglist_Total(shoppingList.get(i).Positions);
+
+            Overview_Data.add(ov);
         }
 
         return Overview_Data;
@@ -41,11 +46,12 @@ public class Handler_ShoppinglistOverview {
     private String Prepare_Shoppinglist_CheckedTotal(List<ListPosition> Positions){
         int Checked = 0;
         int Total = 0;
-
-        for(int i = 0; i < Positions.size(); i++){
-            Total++;
-            if (Positions.get(i).Checked){
-                Checked++;
+        if(Positions != null) {
+            for (int i = 0; i < Positions.size(); i++) {
+                Total++;
+                if (Positions.get(i).Checked) {
+                    Checked++;
+                }
             }
         }
         return (Checked + "/" + Total);
@@ -53,13 +59,29 @@ public class Handler_ShoppinglistOverview {
 
     private String Prepare_Shoppinglist_Total(List<ListPosition> Positions){
         int summ = 0;
-
-        for(int i = 0; i < Positions.size(); i++){
-            if(!Positions.get(i).Checked) {
-                summ += Positions.get(i).Article.Cost;
+        if(Positions != null) {
+            for (int i = 0; i < Positions.size(); i++) {
+                if (!Positions.get(i).Checked) {
+                    summ += Positions.get(i).Article.Cost;
+                }
             }
         }
-        return String.valueOf(summ);
+        return GetCurrencyString(String.valueOf(summ));
+    }
+
+    private String GetCurrencyString(String summ){
+        String c = summ;
+        String value = summ;
+        if(value.contains(".")){
+            String[] split = value.split("\\.");
+            if(split[1].length() == 1){
+                c = value + "0";
+            }
+        }
+        else {
+            c = value + ".00";
+        }
+        return c;
     }
 
 }

@@ -2,6 +2,7 @@ package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import letschert_ruh.einkaufsliste.Database.ShoppingList;
+import letschert_ruh.einkaufsliste.Handler.Handler_ShoppinglistOverview;
 import letschert_ruh.einkaufsliste.R;
 import letschert_ruh.einkaufsliste.GUI.Adapter.Adapter_ShoppingList_Overview;
 import letschert_ruh.einkaufsliste.GUI.Data.GUI_Data_ShoppingList_Overview;
@@ -38,19 +41,20 @@ public class Activity_ListOverview extends Activity {
 
         //TODO Nach Test von Handler aktivieren!
         //Fertige Implementierung:
-        //Handler_ShoppinglistOverview handler = new Handler_ShoppinglistOverview();
-        //GUI_Data_ShoppingList_Overview Overview_Data[] = handler.GetOverviewData().toArray(new GUI_Data_ShoppingList_Overview[handler.GetOverviewData().size()]);
+        Handler_ShoppinglistOverview handler = new Handler_ShoppinglistOverview();
+        List<GUI_Data_ShoppingList_Overview> list = handler.GetOverviewData(this);
+        GUI_Data_ShoppingList_Overview Overview_Data[] = list.toArray(new GUI_Data_ShoppingList_Overview[list.size()]);
 
         //TODO Nach Test von Handler deaktivieren!
         //Test:
-        List<GUI_Data_ShoppingList_Overview> testdaten = new ArrayList<GUI_Data_ShoppingList_Overview>();
-        for(long i = 0; i < 10; i++){
-            String name = ("Einkaufsliste " + i);
-            String CheckedTotal = ((i+10) + "/" + (i + 20));
-            String Total = ((i * 100) + ",90");
-            testdaten.add(new GUI_Data_ShoppingList_Overview(name,CheckedTotal,Total));
-        }
-        GUI_Data_ShoppingList_Overview Overview_Data[] = testdaten.toArray(new GUI_Data_ShoppingList_Overview[testdaten.size()]);
+        //List<GUI_Data_ShoppingList_Overview> testdaten = new ArrayList<GUI_Data_ShoppingList_Overview>();
+        //for(long i = 0; i < 10; i++){
+        //    String name = ("Einkaufsliste " + i);
+        //    String CheckedTotal = ((i+10) + "/" + (i + 20));
+        //    String Total = ((i * 100) + ",90");
+        //    testdaten.add(new GUI_Data_ShoppingList_Overview(name,CheckedTotal,Total));
+        //}
+        //GUI_Data_ShoppingList_Overview Overview_Data[] = testdaten.toArray(new GUI_Data_ShoppingList_Overview[testdaten.size()]);
         //----------------------------------------
 
 
@@ -68,7 +72,7 @@ public class Activity_ListOverview extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0) {
-                    ActionCreateNewShoppinglist();
+                    ActionCreateNewShoppinglist(parent.getContext());
                 }
                 else{
                     openShoppinglist(position);
@@ -110,7 +114,7 @@ public class Activity_ListOverview extends Activity {
         startActivity(intent);
     }
 
-    private void ActionCreateNewShoppinglist(){
+    private void ActionCreateNewShoppinglist(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.new_Shoppinglist);
 
@@ -122,8 +126,10 @@ public class Activity_ListOverview extends Activity {
         builder.setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Todo
-                Toast.makeText(getApplicationContext(),input.getText().toString(), Toast.LENGTH_SHORT).show();
+                ShoppingList list = new ShoppingList();
+                list.Name = input.getText().toString();
+                list.SaveOrUpdate(context);
+                //Toast.makeText(getApplicationContext(),input.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
