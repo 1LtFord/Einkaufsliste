@@ -20,4 +20,7 @@
     <string name="cd_new_article">Creates a new Article</string>
     <string name="error_NewArticle_EmptyName">Please add a name to the article</string>
     <string name="title_NewArticle">New Article</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="hint_newShoppinglist">Name</string>
 </resources>

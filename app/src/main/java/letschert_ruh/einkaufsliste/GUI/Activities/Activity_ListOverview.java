@@ -1,14 +1,19 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +67,12 @@ public class Activity_ListOverview extends Activity {
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                if(position == 0) {
+                    ActionCreateNewShoppinglist();
+                }
+                else{
+                    openShoppinglist(position);
+                }
             }
         });
     }
@@ -100,5 +110,35 @@ public class Activity_ListOverview extends Activity {
         startActivity(intent);
     }
 
+    private void ActionCreateNewShoppinglist(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.new_Shoppinglist);
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setHint(R.string.hint_newShoppinglist);
+        builder.setView(input);
+
+        builder.setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Todo
+                Toast.makeText(getApplicationContext(),input.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private void openShoppinglist(long position){
+        //Todo
+        Toast.makeText(getApplicationContext(),String.valueOf(position), Toast.LENGTH_SHORT).show();
+    }
 
 }

@@ -38,7 +38,7 @@ public class Activity_EditArticle extends Activity {
         this.Name = (TextView)findViewById(R.id.tv_Name);
         this.Merchant = (TextView)findViewById(R.id.tv_Merchant);
         this.Manufacturer = (TextView)findViewById(R.id.tv_Manufacturer);
-        this.Cost = (TextView)findViewById(R.id.tv_Price);
+        this.Cost = (TextView)findViewById(R.id.tv_Cost);
 
         this.NewName = (EditText)findViewById(R.id.tbx_ArticleName);
         this.NewMerchant = (EditText)findViewById(R.id.tbx_Merchant);
