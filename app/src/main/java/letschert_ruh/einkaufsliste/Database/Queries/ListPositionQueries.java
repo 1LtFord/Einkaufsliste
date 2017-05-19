@@ -12,7 +12,7 @@ import letschert_ruh.einkaufsliste.Database.ShoppingList;
 
 public class ListPositionQueries {
     public List<ListPosition> GetByShoppingList(ShoppingList shoppingList, Context context){
-        SQLiteDatabase db = new SQLiteHandler(null).getReadableDatabase();
+        SQLiteDatabase db = new SQLiteHandler(context).getReadableDatabase();
 
         ListPosition position = new ListPosition();
 
@@ -27,6 +27,8 @@ public class ListPositionQueries {
         String query = "Select * from " + position.GetTableName() + " where " + selection + " ;";
 
         Cursor cursor = db.rawQuery(query, null);
+
+        //cursor = db.rawQuery("SELECT * FROM " + position.GetTableName() + ";", null);
 
         List<ListPosition> results = new ArrayList<ListPosition>();
 

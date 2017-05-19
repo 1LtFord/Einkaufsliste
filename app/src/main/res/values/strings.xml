@@ -23,4 +23,8 @@
     <string name="action_ok">OK</string>
     <string name="action_cancel">Cancel</string>
     <string name="hint_newShoppinglist">Name</string>
+    <string name="Action_AddArticle">Add Article</string>
+    <string name="title_SelectArticle">Select Article</string>
+    <string name="hint_ArticleAmount">Amount</string>
+    <string name="title_ArticleAmount">Article Amount</string>
 </resources>

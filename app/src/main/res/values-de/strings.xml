@@ -21,4 +21,8 @@
     <string name="action_example"></string>
     <string name="action_cancel">Abbrechen</string>
     <string name="hint_newShoppinglist">Name</string>
+    <string name="Action_AddArticle">Artikel Hinzufügen</string>
+    <string name="title_SelectArticle">Artikel Auswählen</string>
+    <string name="hint_ArticleAmount">Artikel</string>
+    <string name="title_ArticleAmount">Anzahl Artikel</string>
 </resources>

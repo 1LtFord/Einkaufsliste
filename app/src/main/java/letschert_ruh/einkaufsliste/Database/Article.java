@@ -43,18 +43,17 @@ public class Article {
     }
 
     public String GetCurrencyString(){
-        String c = String.valueOf(Cost);
         String value = String.valueOf(Cost);
         if(value.contains(".")){
             String[] split = value.split("\\.");
             if(split[1].length() == 1){
-                c = value + "0";
+                value = value + "0";
             }
         }
         else {
-            c = value + ".00";
+            value = value + ".00";
         }
-        return c;
+        return value;
     }
 
     public Article()

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import letschert_ruh.einkaufsliste.Database.Queries.ShoppingListQueries;
 import letschert_ruh.einkaufsliste.Database.ShoppingList;
 import letschert_ruh.einkaufsliste.Handler.Handler_ShoppinglistOverview;
 import letschert_ruh.einkaufsliste.R;
@@ -29,44 +30,17 @@ public class Activity_ListOverview extends Activity {
 
     private ListView listView1;
 
+    private List<GUI_Data_ShoppingList_Overview> lists_overview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_overview);
 
-        //Nicht benötigt da Startbildschirm
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        //setTitle("Test");
-
-
-        //TODO Nach Test von Handler aktivieren!
-        //Fertige Implementierung:
-        Handler_ShoppinglistOverview handler = new Handler_ShoppinglistOverview();
-        List<GUI_Data_ShoppingList_Overview> list = handler.GetOverviewData(this);
-        GUI_Data_ShoppingList_Overview Overview_Data[] = list.toArray(new GUI_Data_ShoppingList_Overview[list.size()]);
-
-        //TODO Nach Test von Handler deaktivieren!
-        //Test:
-        //List<GUI_Data_ShoppingList_Overview> testdaten = new ArrayList<GUI_Data_ShoppingList_Overview>();
-        //for(long i = 0; i < 10; i++){
-        //    String name = ("Einkaufsliste " + i);
-        //    String CheckedTotal = ((i+10) + "/" + (i + 20));
-        //    String Total = ((i * 100) + ",90");
-        //    testdaten.add(new GUI_Data_ShoppingList_Overview(name,CheckedTotal,Total));
-        //}
-        //GUI_Data_ShoppingList_Overview Overview_Data[] = testdaten.toArray(new GUI_Data_ShoppingList_Overview[testdaten.size()]);
-        //----------------------------------------
-
-
-        Adapter_ShoppingList_Overview adapter = new Adapter_ShoppingList_Overview(this, R.layout.element_listview_shoppinglist_overview, Overview_Data);
-
-        listView1 = (ListView)findViewById(R.id.lv_ListsOverview);
+        this.listView1 = (ListView)findViewById(R.id.lv_ListsOverview);
 
         View header = (View)getLayoutInflater().inflate(R.layout.element_listview_newlist, null);
         listView1.addHeaderView(header);
-
-        listView1.setAdapter(adapter);
-
 
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,10 +49,12 @@ public class Activity_ListOverview extends Activity {
                     ActionCreateNewShoppinglist(parent.getContext());
                 }
                 else{
-                    openShoppinglist(position);
+                    openShoppinglist(position, parent.getContext());
                 }
             }
         });
+
+        GetShoppingLists();
     }
 
     @Override
@@ -100,6 +76,16 @@ public class Activity_ListOverview extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void GetShoppingLists(){
+        Handler_ShoppinglistOverview handler = new Handler_ShoppinglistOverview();
+
+        lists_overview = handler.GetOverviewData(this);
+        GUI_Data_ShoppingList_Overview Overview_Data[] = lists_overview.toArray(new GUI_Data_ShoppingList_Overview[lists_overview.size()]);
+        Adapter_ShoppingList_Overview adapter = new Adapter_ShoppingList_Overview(this, R.layout.element_listview_shoppinglist_overview, Overview_Data);
+
+        listView1.setAdapter(adapter);
     }
 
     private void Action_OpenArticleOverview()
@@ -129,6 +115,7 @@ public class Activity_ListOverview extends Activity {
                 ShoppingList list = new ShoppingList();
                 list.Name = input.getText().toString();
                 list.SaveOrUpdate(context);
+                GetShoppingLists();
                 //Toast.makeText(getApplicationContext(),input.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -142,9 +129,19 @@ public class Activity_ListOverview extends Activity {
         builder.show();
     }
 
-    private void openShoppinglist(long position){
+    private void openShoppinglist(long position, Context context){
         //Todo
-        Toast.makeText(getApplicationContext(),String.valueOf(position), Toast.LENGTH_SHORT).show();
+        ShoppingListQueries queries = new ShoppingListQueries();
+
+        List<ShoppingList> lists = queries.GetAll(context);
+
+        //Bessere Möglichkeiten erst mit Mindestvoraussetzung API Stufe 25 (Android 7)
+        ShoppingList list = lists.get((int)position - 1);
+        Intent intent = new Intent(context, Activity_ListView.class);
+        intent.putExtra("Id", list.GetId());
+        intent.putExtra("Index", (int)position - 1);
+        startActivity(intent);
+        //Toast.makeText(getApplicationContext(),String.valueOf(position), Toast.LENGTH_SHORT).show();
     }
 
 }

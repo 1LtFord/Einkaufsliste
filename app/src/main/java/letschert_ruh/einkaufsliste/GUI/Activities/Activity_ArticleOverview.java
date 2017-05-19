@@ -1,10 +1,13 @@
 package letschert_ruh.einkaufsliste.GUI.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +20,10 @@ import android.widget.ListView;
 import java.util.List;
 
 import letschert_ruh.einkaufsliste.Database.Article;
+import letschert_ruh.einkaufsliste.Database.ListPosition;
 import letschert_ruh.einkaufsliste.Database.Queries.ArticleQueries;
+import letschert_ruh.einkaufsliste.Database.Queries.ShoppingListQueries;
+import letschert_ruh.einkaufsliste.Database.ShoppingList;
 import letschert_ruh.einkaufsliste.GUI.Adapter.Adapter_Articlelist_Edit;
 import letschert_ruh.einkaufsliste.R;
 
@@ -26,19 +32,18 @@ public class Activity_ArticleOverview extends Activity {
     private ListView ArticleListView;
     private Adapter_Articlelist_Edit adapter;
     private EditText SearchText;
+    private List<Article> Articles;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articlelist_overview);
+
         setTitle(getString(R.string.action_EditArticles));
 
         this.ArticleListView = (ListView)findViewById(R.id.lv_Article_List);
         this.SearchText = (EditText)findViewById(R.id.et_Searchbar);
-
-        String[] test = new String[]{"test", "array", "testing"};
-        ArticleQueries queries = new ArticleQueries();
-        List<Article> i = queries.GetByNameOrManufacturer(test, this);
 
         setSearchbarListener();
         setListViewOnClickListener();
@@ -64,8 +69,7 @@ public class Activity_ArticleOverview extends Activity {
         }
     }
 
-    private void Action_AddArticle()
-    {
+    private void Action_AddArticle() {
         Intent intent = new Intent(this, Activity_EditArticle.class);
         startActivity(intent);
     }
@@ -74,7 +78,7 @@ public class Activity_ArticleOverview extends Activity {
         ArticleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO
+                    //TODO
             }
         });
     }
@@ -100,7 +104,7 @@ public class Activity_ArticleOverview extends Activity {
 
     private void Search(String s){
         ArticleQueries queries = new ArticleQueries();
-        List<Article> Articles = queries.GetByNameOrManufacturer(SplitSearchString(s), this);
+        this.Articles = queries.GetByNameOrManufacturer(SplitSearchString(s), this);
 
         Adapter_Articlelist_Edit adapter = new Adapter_Articlelist_Edit(this,R.layout.element_articlelist_article,Articles.toArray(new Article[Articles.size()]));
         ArticleListView.setAdapter(adapter);
