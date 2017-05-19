@@ -1,6 +1,7 @@
 package letschert_ruh.einkaufsliste.Database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class ListPosition {
@@ -55,7 +56,7 @@ public class ListPosition {
         this.Id = id;
     }
 
-    public boolean SaveOrUpdate()
+    public boolean SaveOrUpdate(Context context)
     {
         if (this.Article == null || this.Article.GetId() == 0){
             return false;
@@ -66,7 +67,7 @@ public class ListPosition {
             return false;
         }
 
-        SQLiteDatabase db = new SQLiteHandler(null).getWritableDatabase();
+        SQLiteDatabase db = new SQLiteHandler(context).getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();

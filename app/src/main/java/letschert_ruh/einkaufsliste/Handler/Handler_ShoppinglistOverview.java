@@ -33,55 +33,14 @@ public class Handler_ShoppinglistOverview {
         for(int i = 0; i < shoppingList.size(); i++){
             GUI_Data_ShoppingList_Overview ov = new GUI_Data_ShoppingList_Overview();
 
+            ov.Id = shoppingList.get(i).GetId();
             ov.Name = shoppingList.get(i).Name;
-            ov.CheckedTotal = Prepare_Shoppinglist_CheckedTotal(shoppingList.get(i).Positions);
-            ov.Total = Prepare_Shoppinglist_Total(shoppingList.get(i).Positions);
+            ov.CheckedTotal = shoppingList.get(i).GetCheckedTotal();
+            ov.Total = shoppingList.get(i).GetCostLeft();
 
             Overview_Data.add(ov);
         }
 
         return Overview_Data;
     }
-
-    private String Prepare_Shoppinglist_CheckedTotal(List<ListPosition> Positions){
-        int Checked = 0;
-        int Total = 0;
-        if(Positions != null) {
-            for (int i = 0; i < Positions.size(); i++) {
-                Total++;
-                if (Positions.get(i).Checked) {
-                    Checked++;
-                }
-            }
-        }
-        return (Checked + "/" + Total);
-    }
-
-    private String Prepare_Shoppinglist_Total(List<ListPosition> Positions){
-        int summ = 0;
-        if(Positions != null) {
-            for (int i = 0; i < Positions.size(); i++) {
-                if (!Positions.get(i).Checked) {
-                    summ += Positions.get(i).Article.Cost;
-                }
-            }
-        }
-        return GetCurrencyString(String.valueOf(summ));
-    }
-
-    private String GetCurrencyString(String summ){
-        String c = summ;
-        String value = summ;
-        if(value.contains(".")){
-            String[] split = value.split("\\.");
-            if(split[1].length() == 1){
-                c = value + "0";
-            }
-        }
-        else {
-            c = value + ".00";
-        }
-        return c;
-    }
-
 }

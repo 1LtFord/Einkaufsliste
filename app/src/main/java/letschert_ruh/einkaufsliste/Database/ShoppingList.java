@@ -29,6 +29,52 @@ public class ShoppingList {
         return this.COLUMN_NAME_NAME;
     }
 
+    public String GetCheckedTotal(){
+        List<ListPosition> positions = this.Positions;
+        String CheckedTotal = "0/0";
+        if(Positions != null) {
+            int checked = 0;
+            int total = positions.size();
+
+            for (int i = 0; i < positions.size(); i++) {
+                if (positions.get(i).Checked) {
+                    checked++;
+                }
+            }
+            CheckedTotal = String.valueOf(checked) + "/" + String.valueOf(total);
+        }
+        return CheckedTotal;
+    }
+
+    public String GetCostLeft(){
+        List<ListPosition> positions = this.Positions;
+        Double CostLeft = 0.0;
+
+        if(positions != null){
+            for(int i = 0; i < positions.size(); i++){
+                if(!positions.get(i).Checked){
+                    CostLeft += (positions.get(i).Article.Cost * positions.get(i).Amount);
+                }
+
+            }
+        }
+        return GetCurrencyString(CostLeft);
+    }
+
+    private String GetCurrencyString(Double Cost){
+        String value = String.valueOf(Cost);
+        if(value.contains(".")){
+            String[] split = value.split("\\.");
+            if(split[1].length() == 1){
+                value = value + "0";
+            }
+        }
+        else {
+            value = value + ".00";
+        }
+        return value;
+    }
+
     public ShoppingList()
     {
 

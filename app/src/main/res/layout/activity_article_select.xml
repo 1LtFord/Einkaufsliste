@@ -4,42 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="letschert_ruh.einkaufsliste.GUI.Activities.Activity_ListView">
+    tools:context="letschert_ruh.einkaufsliste.GUI.Activities.Activity_ArticleSelect">
 
-    <TextView
-        android:id="@+id/tv_CostLeft"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_Searchbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="10,50€"
-        android:textSize="18sp"
+        android:ems="10"
+        android:hint="@string/hint_SearchArticles"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_CheckedTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:text="10/20"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
-
     <ListView
-        android:id="@+id/lv_Shopping_List"
+        android:id="@+id/lv_Article_List"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_CheckedTotal" />
+        app:layout_constraintTop_toBottomOf="@+id/et_Searchbar" />
 
 </android.support.constraint.ConstraintLayout>
