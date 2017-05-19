@@ -23,18 +23,10 @@ public class ListPositionQueries {
                 position.GetColumnNameChecked(),
         };
 
-        String selection = position.GetColumnNameShoppingList() + " = ?";
-        String[] selectionArgs = { "[" + shoppingList.GetId() + "]" };
+        String selection = position.GetColumnNameShoppingList() + " = " + shoppingList.GetId();
+        String query = "Select * from " + position.GetTableName() + " where " + selection + " ;";
 
-        Cursor cursor = db.query(
-                position.GetTableName(),             // The table to query
-                projection,                          // The columns to return
-                selection,                           // The columns for the WHERE clause
-                selectionArgs,                       // The values for the WHERE clause
-                null,                                // don't group the rows
-                null,                                // don't filter by row groups
-                null                                 // The sort order
-        );
+        Cursor cursor = db.rawQuery(query, null);
 
         List<ListPosition> results = new ArrayList<ListPosition>();
 
