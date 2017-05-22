@@ -16,26 +16,10 @@ public class ArticleQueries {
 
         Article article = new Article();
 
-        String[] projection = {
-                "_ID",
-                article.GetColumnNameName(),
-                article.GetColumnNameMerchant(),
-                article.GetColumnNameManufacturer(),
-                article.GetColumnNameCost()
-        };
+        String selection = "_ID = " + id;
+        String query = "Select * from " + article.GetTableName() + " where " + selection + " ;";
 
-        String selection = "ID" + " = ?";
-        String[] selectionArgs = { "[" + id + "]" };
-
-        Cursor cursor = db.query(
-                article.GetTableName(),              // The table to query
-                projection,                          // The columns to return
-                selection,                           // The columns for the WHERE clause
-                selectionArgs,                       // The values for the WHERE clause
-                null,                                // don't group the rows
-                null,                                // don't filter by row groups
-                null                                 // The sort order
-        );
+        Cursor cursor = db.rawQuery(query, null);
 
         Article result = null;
         while(cursor.moveToNext()) {
@@ -71,14 +55,6 @@ public class ArticleQueries {
 
         Article article = new Article();
 
-        String[] projection = {
-                "_ID",
-                article.GetColumnNameName(),
-                article.GetColumnNameMerchant(),
-                article.GetColumnNameManufacturer(),
-                article.GetColumnNameCost()
-        };
-
         String selection = article.GetColumnNameName() + " like " + "'%" +  searchStrings[0] + "%'";
         selection += " or " + article.GetColumnNameManufacturer() + " like " + "'%" + searchStrings[0] + "%'";
         for (int i = 1; i < searchStrings.length; i++)
@@ -89,7 +65,6 @@ public class ArticleQueries {
 
         String query = "Select * from " + article.GetTableName() + " where " + selection + " ;";
         Cursor cursor = db.rawQuery(query, null);
-        //Cursor cursor = db.query(article.GetTableName(),projection,selection,doubledSearchStrings,null,null,null);
 
         List<Article> result = new ArrayList<Article>();
         Article resultItem = null;
@@ -116,7 +91,6 @@ public class ArticleQueries {
         }
 
         cursor.close();
-        db.close();
 
         if (result == null){
             return null;

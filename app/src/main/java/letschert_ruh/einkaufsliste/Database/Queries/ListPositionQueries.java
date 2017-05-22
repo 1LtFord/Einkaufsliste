@@ -16,13 +16,6 @@ public class ListPositionQueries {
 
         ListPosition position = new ListPosition();
 
-        String[] projection = {
-                "_ID",
-                position.GetColumnNameArticle(),
-                position.GetColumnNameAmount(),
-                position.GetColumnNameChecked(),
-        };
-
         String selection = position.GetColumnNameShoppingList() + " = " + shoppingList.GetId();
         String query = "Select * from " + position.GetTableName() + " where " + selection + " ;";
 
