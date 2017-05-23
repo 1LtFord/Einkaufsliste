@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import java.sql.Ref;
 import java.util.List;
 
 import letschert_ruh.einkaufsliste.Database.ListPosition;
@@ -28,6 +30,8 @@ public class Activity_ListView extends Activity {
     private ListView ListView1;
     private long ListId;
     private int ListIndex;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,9 @@ public class Activity_ListView extends Activity {
         this.list = getShoppingList(this.ListId, this.ListIndex);
         this.setTitle(this.list.Name);
         if(this.list != null){
-            ListPositionQueries query = new ListPositionQueries();
-            this.positions = query.GetByShoppingList(this.list, this);
+            RefreschListPositons();
+            FillListView();
         }
-        FillView();
-
     }
 
     @Override
@@ -101,16 +103,11 @@ public class Activity_ListView extends Activity {
 
     private void FillView() {
         if (this.list != null) {
-
             TextView tv = (TextView) findViewById(R.id.tv_CheckedTotal);
             tv.setText(this.list.GetCheckedTotal());
 
             tv = (TextView) findViewById(R.id.tv_CostLeft);
             tv.setText(this.list.GetCostLeft());
-
-            if (this.positions != null) {
-                FillListView();
-            }
         }
     }
 
@@ -119,19 +116,12 @@ public class Activity_ListView extends Activity {
                 R.layout.element_listview_shoppinglist_article,
                 this.positions.toArray(new ListPosition[this.positions.size()]));
         this.ListView1.setAdapter(adapter);
-        SetListViewListener();
     }
 
-    private void SetListViewListener(){
-        this.ListView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO
-            }
-        });
+    public void RefreschListPositons(){
+        ListPositionQueries query = new ListPositionQueries();
+        this.positions = query.GetByShoppingList(this.list, this);
+        this.list.Positions = this.positions;
+        FillView();
     }
-
-
-
-
 }

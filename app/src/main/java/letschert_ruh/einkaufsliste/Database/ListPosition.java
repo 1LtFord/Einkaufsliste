@@ -81,13 +81,15 @@ public class ListPosition {
             this.Id = newRowId;
         }else{
             String selection = "_ID" + " = ?";
-            String[] selectionArgs = { "[" + this.Id + "]" };
+            String[] selectionArgs = { String.valueOf(this.Id) };
+
 
             db.update(
                 this.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
+
         }
         return true;
     }

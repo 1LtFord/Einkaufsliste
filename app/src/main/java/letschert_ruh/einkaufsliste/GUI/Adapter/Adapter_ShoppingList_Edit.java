@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 import letschert_ruh.einkaufsliste.Database.ListPosition;
 import letschert_ruh.einkaufsliste.Database.ShoppingList;
+import letschert_ruh.einkaufsliste.GUI.Activities.Activity_ListView;
 import letschert_ruh.einkaufsliste.R;
 
 public class Adapter_ShoppingList_Edit extends ArrayAdapter<ListPosition> {
@@ -51,13 +53,23 @@ public class Adapter_ShoppingList_Edit extends ArrayAdapter<ListPosition> {
             holder = (Holder_ShoppingList_Edit)row.getTag();
         }
 
-        ListPosition p = data[position];
+        final ListPosition p = data[position];
         holder.Name.setText(p.Article.Name);
-        holder.Count.setText(p.Amount);
+        holder.Count.setText(String.valueOf(p.Amount) + "x");
         holder.Cost.setText(p.Article.GetCurrencyString());
         holder.ItemChecked.setChecked(p.Checked);
         holder.Manufacturer.setText(p.Article.Manufacturer);
         holder.Merchant.setText(p.Article.Merchant);
+        holder.ItemChecked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox ckbx = (CheckBox)v;
+                p.Checked = ckbx.isChecked();
+                p.SaveOrUpdate(context);
+                Activity_ListView l = (Activity_ListView)context;
+                l.RefreschListPositons();
+            }
+        });
 
         return row;
     }

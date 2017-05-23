@@ -48,14 +48,13 @@ public class ShoppingList {
 
     public String GetCostLeft(){
         List<ListPosition> positions = this.Positions;
-        Double CostLeft = 0.0;
+        Double CostLeft = 0.0d;
 
         if(positions != null){
             for(int i = 0; i < positions.size(); i++){
                 if(!positions.get(i).Checked){
-                    CostLeft += (positions.get(i).Article.Cost * positions.get(i).Amount);
+                    CostLeft += (positions.get(i).Article.Cost * (double)positions.get(i).Amount);
                 }
-
             }
         }
         return GetCurrencyString(CostLeft);
@@ -66,11 +65,14 @@ public class ShoppingList {
         if(value.contains(".")){
             String[] split = value.split("\\.");
             if(split[1].length() == 1){
-                value = value + "0";
+                value += "0";
+            }
+            if(split[1].length() > 2){
+                value = split[0] + "." + split[1].substring(0,2);
             }
         }
         else {
-            value = value + ".00";
+            value += ".00";
         }
         return value;
     }

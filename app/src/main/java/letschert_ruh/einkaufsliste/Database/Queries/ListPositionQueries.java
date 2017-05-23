@@ -38,11 +38,14 @@ public class ListPositionQueries {
             item.Amount = cursor.getInt(
                     cursor.getColumnIndexOrThrow(position.GetColumnNameAmount()));
 
-            item.Amount = cursor.getInt(
-                    cursor.getColumnIndexOrThrow(position.GetColumnNameAmount()));
+            //item.Amount = cursor.getInt(
+            //        cursor.getColumnIndexOrThrow(position.GetColumnNameAmount()));
+
+            int i = cursor.getInt(
+                    cursor.getColumnIndexOrThrow(position.GetColumnNameChecked()));
 
             item.Checked = cursor.getInt(
-                    cursor.getColumnIndexOrThrow(position.GetColumnNameChecked())) != 1 ? false : true;
+                    cursor.getColumnIndexOrThrow(position.GetColumnNameChecked())) > 0;
 
             item.ShoppingList = shoppingList;
 
